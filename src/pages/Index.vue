@@ -8,6 +8,7 @@
     </div>
     <div style="float:right;">
       <p style="width:500px;">{{toJson}}</p>
+      <p style="width:500px;">{{showStore}}</p>
       <ul>
         <li v-for="item in items" :key="item.id">{{item.title}}</li>
       </ul>
@@ -47,6 +48,10 @@ export default {
     },
     toJson() {
       return this.user.$toJson()
+    },
+    showStore() {
+      // const store = User.store()
+      return this.$store.state
     }
   },
   methods: {
