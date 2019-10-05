@@ -43,12 +43,12 @@ export default {
         {
           id: 28,
           name: 'Milan',
-          email: 'kosir.milan@gmail.com'
+          email: 'testuser2@example.com'
         },
         {
           id: 27,
           name: 'Lidija',
-          email: 'kosir.lidija@gmail.com'
+          email: 'testuser1@example.com'
         }
       ]
     })

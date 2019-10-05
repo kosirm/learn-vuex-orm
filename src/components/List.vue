@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>{{list.title}}</h5>
-    <input v-model="form.title" type="text" />
+    <input v-model="formItem.title" type="text" />
     <button @click="addItem">Add Item</button>
     <ul>
       <li v-for="item in filledList.items" :key="item.id">
@@ -34,7 +34,7 @@ export default {
   },
   data() {
     return {
-      form: {
+      formItem: {
         title: '',
         list_id: this.list.id
       }
@@ -42,8 +42,8 @@ export default {
   },
   methods: {
     addItem() {
-      console.log(this.form)
-      Item.insert({ data: this.form })
+      console.log(this.formItem)
+      Item.insert({ data: this.formItem })
     },
     deleteItem(item) {
       console.log(item.id)
