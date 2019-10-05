@@ -42,11 +42,11 @@ export default {
   },
   methods: {
     addItem() {
-      console.log(this.formItem)
+      // console.log(this.formItem)
       Item.insert({ data: this.formItem })
     },
     deleteItem(item) {
-      console.log(item.id)
+      // console.log(item.id)
       Item.delete(item.id)
     }
   }
