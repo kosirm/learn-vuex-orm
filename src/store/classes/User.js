@@ -14,6 +14,7 @@ export default class User extends Model {
             profile: this.hasOne(Profile, 'user_id'),
             // a user has many lists
             lists: this.hasMany(List, 'user_id'),
+            // ovo je vrlo jednostavno, ali izgleda jako korisno
             items: this.hasManyThrough(Item, List, 'user_id', 'list_id')
         }
     }
