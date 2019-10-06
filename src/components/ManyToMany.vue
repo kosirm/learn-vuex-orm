@@ -74,13 +74,13 @@ export default {
     changeRole() {
       Role.update({
         where: 43,
-        data: { title: 'Administrator' }
+        data: { title: 'boss' }
       })
     },
     changeName() {
       User.update({
         where: 28,
-        data: { name: 'Milanko' }
+        data: { name: 'Mima' }
       })
     }
   }

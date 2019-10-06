@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-xl">
-    <ManyToMany />
+    <OneToOnePolymorphic />
     <!-- <div style="float:left;">
       <h1>{{user.name}}</h1>
       <input type="text" v-model="form.title" />
@@ -27,12 +27,14 @@
 import User from '../store/classes/User'
 import List from '../store/classes/List'
 // import ListComponent from '../components/List'
-import ManyToMany from '../components/ManyToMany'
+// import ManyToMany from '../components/ManyToMany'
+import OneToOnePolymorphic from '../components/OneToOnePolymorphic'
 export default {
   name: 'PageIndex',
   components: {
     // List: ListComponent,
-    ManyToMany
+    // ManyToMany
+    OneToOnePolymorphic
   },
   data() {
     return {
