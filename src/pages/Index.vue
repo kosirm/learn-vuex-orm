@@ -1,35 +1,38 @@
 <template>
   <q-page class="q-pa-xl">
-    <div style="float:left;">
+    <ManyToMany />
+    <!-- <div style="float:left;">
       <h1>{{user.name}}</h1>
       <input type="text" v-model="form.title" />
       <button @click="addList">Add List</button>
       <List v-for="list in user.lists" :key="list.id" :list="list"></List>
     </div>
-    <div style="float:right;">
-      <!-- <p>
+    <div style="float:right;">-->
+    <!-- <p>
         <b>this.user.$toJson():</b>
       </p>
       <p style="width:500px;">{{toJson}}</p>
       <p>
         <b>this.$store.state:</b>
       </p>
-      <p style="width:500px;">{{showStore}}</p>-->
-      <ul>
+    <p style="width:500px;">{{showStore}}</p>-->
+    <!-- <ul>
         <li v-for="item in user.items" :key="item.id">{{item.title}}</li>
       </ul>
-    </div>
+    </div>-->
   </q-page>
 </template>
 
 <script>
 import User from '../store/classes/User'
-import ListComponent from '../components/List'
 import List from '../store/classes/List'
+// import ListComponent from '../components/List'
+import ManyToMany from '../components/ManyToMany'
 export default {
   name: 'PageIndex',
   components: {
-    List: ListComponent
+    // List: ListComponent,
+    ManyToMany
   },
   data() {
     return {
@@ -65,21 +68,6 @@ export default {
       List.insert({ data: this.form })
     }
   },
-  beforeMount() {
-    User.insert({
-      data: [
-        {
-          id: 28,
-          name: 'Milan',
-          email: 'testuser2@example.com'
-        },
-        {
-          id: 27,
-          name: 'Lidija',
-          email: 'testuser1@example.com'
-        }
-      ]
-    })
-  }
+  beforeMount() {}
 }
 </script>
