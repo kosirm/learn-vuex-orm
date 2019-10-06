@@ -7,10 +7,16 @@
       <List v-for="list in user.lists" :key="list.id" :list="list"></List>
     </div>
     <div style="float:right;">
+      <!-- <p>
+        <b>this.user.$toJson():</b>
+      </p>
       <p style="width:500px;">{{toJson}}</p>
-      <p style="width:500px;">{{showStore}}</p>
+      <p>
+        <b>this.$store.state:</b>
+      </p>
+      <p style="width:500px;">{{showStore}}</p>-->
       <ul>
-        <li v-for="item in items" :key="item.id">{{item.title}}</li>
+        <li v-for="item in user.items" :key="item.id">{{item.title}}</li>
       </ul>
     </div>
   </q-page>
@@ -37,14 +43,13 @@ export default {
     user() {
       return User.query()
         .with('lists.items')
+        .with('items')
         .find(28)
     },
     items() {
-      let items = []
-      this.user.lists.forEach(list => {
-        items.push(...list.items)
-      })
-      return items
+      return User.query()
+        .with('items')
+        .find(28)
     },
     toJson() {
       return this.user.$toJson()
