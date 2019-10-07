@@ -1,14 +1,13 @@
 <template>
   <div>
     <p>
-      <b>One To Many Polymorphic relationship:</b>
+      <b>Relationship playground:</b>
     </p>
     <p>
-      <b>videos</b> can have comments,
-      <b>posts</b> can have comments (both are comment-able)
-      <br />So we can see (query) all comments, all videos or posts comments, or comments for
-      <b>particular</b> video or post
-      <br />We can also query all comments and see what comment-able type these comments belong to
+      Ok, kao prvo htio bi imati jasnu sliku, šta sve treba, da se napravi jedan relationship.
+      <br />Znači trebaju dvije klase (ili tri - za many-to-many) i u njima su definirane relacije
+      <br />Onda treba te klase registrirati u vuex store (index.js)
+      <br />I več jih možeš koristiti u nekoj komponenti ili stranici
     </p>
 
     <h2>Comments:</h2>
