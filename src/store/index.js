@@ -9,6 +9,8 @@ import Role from './classes/Role.js'
 import RoleUser from './classes/RoleUser.js'
 import Image from './classes/Image.js'
 import Post from './classes/Post.js'
+import Comment from './classes/Comment.js'
+import Video from './classes/Video.js'
 
 Vue.use(Vuex)
 const database = new VuexORM.Database()
@@ -20,6 +22,8 @@ database.register(Role)
 database.register(RoleUser)
 database.register(Image)
 database.register(Post)
+database.register(Comment)
+database.register(Video)
 /*
  * If not building with SSR mode, you can
  * directly export the Store instantiation
