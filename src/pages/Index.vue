@@ -7,14 +7,14 @@
       <List v-for="list in user.lists" :key="list.id" :list="list"></List>
     </div>
     <div style="float:right;">
-      <!-- <p>
+      <p>
         <b>this.user.$toJson():</b>
       </p>
       <p style="width:500px;">{{toJson}}</p>
       <p>
         <b>this.$store.state:</b>
       </p>
-      <p style="width:500px;">{{showStore}}</p>-->
+      <p style="width:500px;">{{showStore}}</p>
       <ul>
         <li v-for="item in user.items" :key="item.id">{{item.title}}</li>
       </ul>
