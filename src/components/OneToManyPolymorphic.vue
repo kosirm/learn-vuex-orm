@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h2>Videos</h2>
+    <h2>Comments:</h2>
+    <div v-for="comment in comments" :key="comment.id">
+      {{comment.body}} -
+      <!-- <b>{{comment.comment_able.type}}</b> -->
+      <b>{{comment.comment_able.constructor.entity}}</b>
+    </div>
+    <!-- <h2>Videos</h2>
     <div v-for="video in videos" :key="video.id">
       {{video.url}}
       <li v-for="comment in video.comments" :key="comment.id">{{comment.body}}</li>
@@ -9,13 +15,14 @@
     <div v-for="post in posts" :key="post.id">
       {{post.title}}
       <li v-for="comment in post.comments" :key="comment.id">{{comment.body}}</li>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
 import Video from '../store/classes/Video'
 import Post from '../store/classes/Post'
+import Comment from '../store/classes/Comment'
 export default {
   // name: 'ComponentName',
   data() {
@@ -30,6 +37,11 @@ export default {
     posts() {
       return Post.query()
         .with('comments')
+        .get()
+    },
+    comments() {
+      return Comment.query()
+        .with('comment_able')
         .get()
     }
   },
