@@ -6,7 +6,7 @@ export default class List extends Model {
     static entity = 'lists'
     static fields() {
         return {
-            id: this.attr(null),
+            id: this.increment(),
             title: this.attr(''),
             user_id: this.attr(null),
             // relationships

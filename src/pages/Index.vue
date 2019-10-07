@@ -1,69 +1,68 @@
 <template>
   <q-page class="q-pa-xl">
-    <div v-for="x in profiles" :key="x.id">
-      <h5 style="color:orange;">{{x.user.name}}</h5>
-      <p>
-        Bio:
-        <b>{{x.bio }}</b>
-      </p>
-      <p>
-        Life Goal:
-        <b>{{x.life_goal }}</b>
-      </p>
+    <div style="float:left;">
+      <h1>{{user.name}}</h1>
+      <input type="text" v-model="form.title" />
+      <button @click="addList">Add List</button>
+      <List v-for="list in user.lists" :key="list.id" :list="list"></List>
     </div>
-    <b>User lists:</b>
-    <li v-for="list in userLists.lists" :key="list.id">
-      {{list.title}}
-      <ul v-for="item in list.items" v-text="item.title" :key="item.id"></ul>
-    </li>
-    <br />
+    <div style="float:right;">
+      <p>
+        <b>this.user.$toJson():</b>
+      </p>
+      <p style="width:500px;">{{toJson}}</p>
+      <p>
+        <b>this.$store.state:</b>
+      </p>
+      <p style="width:500px;">{{showStore}}</p>
+      <ul>
+        <li v-for="item in user.items" :key="item.id">{{item.title}}</li>
+      </ul>
+    </div>
   </q-page>
 </template>
 
 <script>
-import Item from '../store/classes/Item'
 import User from '../store/classes/User'
-import Profile from '../store/classes/Profile'
+import ListComponent from '../components/List'
+import List from '../store/classes/List'
 export default {
   name: 'PageIndex',
+  components: {
+    List: ListComponent
+  },
   data() {
     return {
       form: {
-        title: ''
+        title: '',
+        user_id: 28
       }
     }
   },
   computed: {
-    allUsers() {
-      return User.all()
-    },
     user() {
       return User.query()
-        .with('profile')
-        .find(28)
-    },
-    userLists() {
-      return User.query()
         .with('lists.items')
+        .with('items')
         .find(28)
-    },
-    profile() {
-      return Profile.query()
-        .with('user')
-        .find(55)
-    },
-    profiles() {
-      return Profile.query()
-        .with('user')
-        .get()
     },
     items() {
-      return Item.all()
+      return User.query()
+        .with('items')
+        .find(28)
+    },
+    toJson() {
+      return this.user.$toJson()
+    },
+    showStore() {
+      // const store = User.store()
+      return this.$store.state
     }
   },
   methods: {
-    addItem() {
-      Item.insert({ data: this.form })
+    addList() {
+      // console.log(this.form)
+      List.insert({ data: this.form })
     }
   },
   beforeMount() {
@@ -72,80 +71,12 @@ export default {
         {
           id: 28,
           name: 'Milan',
-          email: 'kosir.milan@gmail.com',
-          profile: {
-            id: 55,
-            bio: 'Milan is a web designer.',
-            life_goal: 'To finish products.'
-          },
-          lists: [
-            {
-              id: 123,
-              title: 'Shopping',
-              items: [
-                { id: 444, title: 'Banana' },
-                { id: 445, title: 'Jabuka' },
-                { id: 446, title: 'Kruška' }
-              ]
-            },
-            {
-              id: 124,
-              title: 'Development',
-              items: [
-                { id: 447, title: 'Vue' },
-                { id: 448, title: 'Vuex-ORM' },
-                { id: 449, title: 'Quasar' }
-              ]
-            },
-            {
-              id: 125,
-              title: 'Projects',
-              items: [
-                { id: 450, title: 'Bible' },
-                { id: 451, title: 'Backpack Site Builder' },
-                { id: 452, title: 'Glass' }
-              ]
-            }
-          ]
+          email: 'testuser2@example.com'
         },
         {
           id: 27,
           name: 'Lidija',
-          email: 'kosir.lidija@gmail.com',
-          profile: {
-            id: 65,
-            bio: 'Lidija is psychotherapyst.',
-            life_goal: 'Help people to start thinking.'
-          },
-          lists: [
-            {
-              id: 126,
-              title: 'Kaufland',
-              items: [
-                { id: 453, title: 'Krumpir' },
-                { id: 454, title: 'Meso' },
-                { id: 455, title: 'Nutella' }
-              ]
-            },
-            {
-              id: 127,
-              title: 'Kave',
-              items: [
-                { id: 456, title: 'Luce' },
-                { id: 457, title: 'Tonka' },
-                { id: 458, title: 'Gracia' }
-              ]
-            },
-            {
-              id: 128,
-              title: 'Terapije',
-              items: [
-                { id: 459, title: 'Antonia' },
-                { id: 460, title: 'Boris' },
-                { id: 461, title: 'Petar' }
-              ]
-            }
-          ]
+          email: 'testuser1@example.com'
         }
       ]
     })
