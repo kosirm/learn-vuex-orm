@@ -5,9 +5,10 @@
     </p>
     <p>
       Ok, kao prvo htio bi imati jasnu sliku, šta sve treba, da se napravi jedan relationship.
-      <br />Znači trebaju dvije klase (ili tri - za many-to-many) i u njima su definirane relacije
-      <br />Onda treba te klase registrirati u vuex store (index.js)
-      <br />I več jih možeš koristiti u nekoj komponenti ili stranici
+      <br />1.) Znači trebaju dvije klase (ili tri - za many-to-many) i u njima su definirane relacije
+      <br />2.) Onda treba te klase registrirati u vuex store (index.js)
+      <br />3.) I več jih možeš koristiti u nekoj komponenti ili stranici
+      <br />U biti izgleda ful jednostavno...
     </p>
 
     <h2>Comments:</h2>
