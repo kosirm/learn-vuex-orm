@@ -1,5 +1,16 @@
 <template>
   <div>
+    <p>
+      <b>One To Many Polymorphic relationship:</b>
+    </p>
+    <p>
+      <b>videos</b> can have comments,
+      <b>posts</b> can have comments (both are comment-able)
+      <br />So we can see (query) all comments, all videos or posts comments, or comments for
+      <b>particular</b> video or post
+      <br />We can also query all comments and see what comment-able type these comments belong to
+    </p>
+
     <h2>Comments:</h2>
     <div v-for="comment in comments" :key="comment.id">
       {{comment.body}} -
