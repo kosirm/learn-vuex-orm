@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5>{{list.title}}</h5>
-    <input v-model="formItem.title" type="text" />
+    <input v-model="formItem.title" type="text" @keyup.enter="addItem" />
     <button @click="addItem">Add Item</button>
     <ul>
       <li v-for="item in filledList.items" :key="item.id">

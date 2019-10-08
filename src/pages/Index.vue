@@ -2,7 +2,7 @@
   <q-page class="q-pa-xl">
     <div style="float:left;">
       <h1>{{user.name}}</h1>
-      <input type="text" v-model="form.title" />
+      <input type="text" v-model="form.title" @keyup.enter="addList" />
       <button @click="addList">Add List</button>
       <List v-for="list in user.lists" :key="list.id" :list="list"></List>
     </div>
