@@ -7,17 +7,22 @@
       <List v-for="list in user.lists" :key="list.id" :list="list"></List>
     </div>
     <div style="float:right;">
-      <p>
+      <p class="q-mb-xs">
         <b>this.user.$toJson():</b>
       </p>
-      <pre style="width:500px;">{{toJson}}</pre>
-      <p>
+      <q-scroll-area style="height: 350px; width: 450px; border:1px solid silver;">
+        <pre style="width:500px;">{{toJson}}</pre>
+      </q-scroll-area>
+
+      <p class="q-mb-xs q-mt-md">
         <b>this.$store.state:</b>
       </p>
-      <pre style="width:500px;">{{showStore}}</pre>
-      <ul>
+      <q-scroll-area style="height: 350px; width: 450px; border:1px solid silver;">
+        <pre style="width:500px;">{{showStore}}</pre>
+      </q-scroll-area>
+      <!-- <ul>
         <li v-for="item in user.items" :key="item.id">{{item.title}}</li>
-      </ul>
+      </ul>-->
     </div>
   </q-page>
 </template>
