@@ -10,11 +10,11 @@
       <p>
         <b>this.user.$toJson():</b>
       </p>
-      <p style="width:500px;">{{toJson}}</p>
+      <pre style="width:500px;">{{toJson}}</pre>
       <p>
         <b>this.$store.state:</b>
       </p>
-      <p style="width:500px;">{{showStore}}</p>
+      <pre style="width:500px;">{{showStore}}</pre>
       <ul>
         <li v-for="item in user.items" :key="item.id">{{item.title}}</li>
       </ul>
