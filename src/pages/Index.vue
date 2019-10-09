@@ -13,7 +13,6 @@
       <q-scroll-area style="height: 350px; width: 450px; border:1px solid silver;">
         <pre style="width:500px;">{{toJson}}</pre>
       </q-scroll-area>
-
       <p class="q-mb-xs q-mt-md">
         <b>this.$store.state:</b>
       </p>
