@@ -1,3 +1,4 @@
 git config --global credential.helper store
+(ovo zapravo radi permanentno, super!)
 
 nimam več izgovora :) freeplane je fenomenalan
