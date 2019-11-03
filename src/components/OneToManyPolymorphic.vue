@@ -4,11 +4,12 @@
       <b>Relationship playground:</b>
     </p>
     <p>
-      Ok, kao prvo htio bi imati jasnu sliku, šta sve treba, da se napravi jedan relationship.
-      <br />1.) Znači trebaju dvije klase (ili tri - za many-to-many) i u njima su definirane relacije
-      <br />2.) Onda treba te klase registrirati u vuex store (index.js)
-      <br />3.) I več jih možeš koristiti u nekoj komponenti ili stranici
-      <br />U biti izgleda ful jednostavno...
+      Ok, idem malo po malo.
+      <br />sve ovo ču brisati i početi jedan po jedan:
+      <br />one-to-one
+      <br />one-to-one-inverse
+      <br />one to many
+      <br />idem ipak spavati...
     </p>
 
     <h2>Comments:</h2>
