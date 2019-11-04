@@ -22,7 +22,8 @@
     </div>
     <div>
       <h5>Users</h5>
-      <div v-for="user in users" :key="user.id">{{user.name}}, Age: {{user.profile.age}}</div>
+      <!-- {{user.name}}: {{user.profile.age}} -->
+      <div v-for="user in users" :key="user.id">{{user}}</div>
     </div>
     <div>
       <h5>Profiles</h5>
@@ -52,15 +53,17 @@ export default {
       return Child.all()
     },
     users() {
-      return (
-        User.query()
-          .with('profile')
-          // .whereId(5)
-          .get()
-      )
+      const users = User.query()
+        .with('profile', query => {
+          query.where('sex', 'Male')
+        })
+        .get()
+      return users
     },
     profiles() {
-      return Profile.all()
+      return Profile.query()
+        .where('sex', 'Male')
+        .get()
     }
   },
   created() {
