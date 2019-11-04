@@ -9,7 +9,8 @@
       <br />one-to-one
       <br />one-to-one-inverse
       <br />one to many
-      <br />idem ipak spavati...
+      <br />Avoid Circular Dependencies -
+      <b>_ClassList.js</b>
     </p>
 
     <h2>Comments:</h2>

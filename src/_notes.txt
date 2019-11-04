@@ -1,4 +1,13 @@
 git config --global credential.helper store
 (ovo zapravo radi permanentno, super!)
 
-nimam več izgovora :) freeplane je fenomenalan
+1.) describe requirement (simpified)
+2.) create classes and relationships
+3.) mock data
+4.) query
+5.) test
+
+ok, počeo sam sa malim snippetsima...
+također hoču napraviti sve kao u Single Table Inheritance
+
+treba mi use case (story)
