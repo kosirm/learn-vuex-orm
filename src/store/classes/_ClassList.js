@@ -1,0 +1,5 @@
+export * from './Person'
+export * from './Adult'
+export * from './Child'
+export * from './User'
+export * from './Profile'
