@@ -13,4 +13,5 @@ mislim da nije problem, ako se to usvoji kao pravilo...
 
 treba mi use case (story)
 
-... kada radim sa vscode, skoro pa ne vidim nikakve razlike ...
+za početak trebam sve izbrisati, počistiti... sutra odmah!
+ne boj se bacati stare stvari i raditi groundup !
