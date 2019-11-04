@@ -9,6 +9,6 @@ git config --global credential.helper store
 
 ok, počeo sam sa malim snippetsima...
 također hoču napraviti sve kao u Single Table Inheritance
+mislim da nije problem, ako se to usvoji kao pravilo...
 
 treba mi use case (story)
-i usput još taj git po malo uvodim
