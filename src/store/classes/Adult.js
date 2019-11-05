@@ -9,7 +9,7 @@ export class Adult extends Person {
     static baseEntity = 'person'
 
     iAmAdult() {
-        console.log('Iam ADULT PERSON')
+        console.log('Iam ADULT PERSON...')
     }
     static fields() {
         return {

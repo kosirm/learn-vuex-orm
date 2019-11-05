@@ -3,7 +3,15 @@
     <p>
       <b>Relationship playground:</b>
     </p>
-    <p>Da li mogu koristiti _ClassList u "normalnim" relationship klasama? Oh, Yes!</p>
+    <p>
+      Da li mogu koristiti _ClassList u "normalnim" relationship klasama? Oh, Yes!
+      <br />Otkrio sam i da se može razvijati na dva ekrana... cooooool!
+    </p>
+    <div>
+      <h5>User Posts</h5>
+      <pre>{{posts}}</pre>
+      <!-- <div v-for="post in posts" :key="post.id">{{post.title}}, {{post.body}}</div> -->
+    </div>
     <div>
       <h5>Persons</h5>
       <div v-for="person in persons" :key="person.id">{{person.name}}, {{person.email}}</div>
@@ -22,7 +30,7 @@
     </div>
     <div>
       <h5>Users</h5>
-      <!-- {{user.name}}: {{user.profile.age}} -->
+      <!-- {{users.profile.age}} -->
       <div v-for="user in users" :key="user.id">{{user}}</div>
     </div>
     <div>
@@ -33,16 +41,22 @@
 </template>
 
 <script>
-import Adult from '../store/classes/Adult'
-import Person from '../store/classes/Person'
-import Child from '../store/classes/Child'
-import User from '../store/classes/User'
-import Profile from '../store/classes/Profile'
+import { Person, Adult, Child, User, Profile, Post, Comment } from '../store/classes/_ClassList'
 export default {
   data() {
     return {}
   },
   computed: {
+    posts() {
+      return (
+        User.query()
+          .with('profile')
+          .with('posts.comments')
+          // .where('id', 9)
+          // .withAllRecursive(5)
+          .get()
+      )
+    },
     adults() {
       return Adult.all()
     },
@@ -53,12 +67,14 @@ export default {
       return Child.all()
     },
     users() {
-      const users = User.query()
-        .with('profile', query => {
-          query.where('sex', 'Male')
+      // evo nešto sam naučio od kiakinga direktno :)
+      // ovo je jako važno, kako uroniti u relationship i onda filtrirati rezultat
+      return User.query()
+        .with('profile')
+        .whereHas('profile', query => {
+          query.where('age', 56)
         })
         .get()
-      return users
     },
     profiles() {
       return Profile.query()
@@ -81,9 +97,29 @@ export default {
     })
     User.insert({
       data: [
+        { id: 8, name: 'Milan', profile: { id: 8, age: 56, sex: 'Male' } },
+        { id: 9, name: 'Lidija', profile: { id: 9, age: 49, sex: 'Female' } },
         { id: 5, name: 'First User', profile: { id: 4, age: 56, sex: 'Male' } },
         { id: 6, name: 'Second User', profile: { id: 5, age: 44, sex: 'Female' } },
         { id: 7, name: 'Third User', profile: { id: 6, age: 22, sex: 'Male' } }
+      ]
+    })
+    Post.insert({
+      data: [
+        { title: 'Moj prvi post', body: 'Nešto zanimljivo', user_id: 8 },
+        { title: 'Moj drugi post', body: 'Nešto zanimljivo ponovno', user_id: 8 },
+        { title: 'Moj treči post', body: 'Nešto zanimljivo po treči put', user_id: 8 },
+        { title: 'Lidijin prvi post', body: 'Nešto zanimljivo za Lidiju', user_id: 9 }
+      ]
+    })
+    Comment.insert({
+      data: [
+        { post_id: 1, body: 'Dobro si to reko...', user_id: 9 },
+        { post_id: 1, body: 'Ma nije baš tako...', user_id: 5 },
+        { post_id: 2, body: 'Ajde nemoj...', user_id: 6 },
+        { post_id: 4, body: 'Ajde Lidija...', user_id: 8 },
+        { post_id: 4, body: 'Samo odvali kako ti znaš...', user_id: 8 },
+        { post_id: 3, body: 'Kako ti kažeš...', user_id: 7 }
       ]
     })
   },
