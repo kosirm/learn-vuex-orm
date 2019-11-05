@@ -6,11 +6,23 @@
     <p>
       Da li mogu koristiti _ClassList u "normalnim" relationship klasama? Oh, Yes!
       <br />Otkrio sam i da se može razvijati na dva ekrana... cooooool!
+      <br />Uskoro če mi trebati i treći :)
     </p>
     <div>
       <h5>User Posts</h5>
-      <pre>{{posts}}</pre>
-      <!-- <div v-for="post in posts" :key="post.id">{{post.title}}, {{post.body}}</div> -->
+      <!-- <pre>{{posters}}</pre> -->
+      <div v-for="poster in posters" :key="poster.id">
+        {{poster.name}}
+        <ul v-for="post in poster.posts" :key="post.id">
+          <li>{{post.title}} :: {{post.body}}</li>
+          <ul v-for="comment in post.comments" :key="comment.id">
+            <li>
+              {{comment.body}} :
+              <b>({{commenter(comment.user_id)[0].name}})</b>
+            </li>
+          </ul>
+        </ul>
+      </div>
     </div>
     <div>
       <h5>Persons</h5>
@@ -46,12 +58,28 @@ export default {
   data() {
     return {}
   },
+  methods: {
+    commenter: function(user) {
+      return User.query()
+        .where('id', user)
+        .get()
+    }
+  },
+  // todo: bilo bi bolje dati ove stvari u metode, jer computed je cached i samo zeza bezveze, a nema nikakve potrebe za computed (reactivnost)
+  // todo: ali ne znam da li mogu koristiti v-for onda?
   computed: {
-    posts() {
+    comments() {
+      return Comment.query()
+        .with('user')
+        .get()
+    },
+    posters() {
       return (
         User.query()
-          .with('profile')
+          // .with('comments')
           .with('posts.comments')
+          .has('posts')
+          .has('comments')
           // .where('id', 9)
           // .withAllRecursive(5)
           .get()
@@ -90,10 +118,7 @@ export default {
       ]
     })
     Child.insert({
-      data: [
-        { id: 3, name: 'Laura Košir', email: 'laura@gmail.com' },
-        { id: 4, name: 'Hana Košir', email: 'hannah@gmail.com' }
-      ]
+      data: [{ id: 3, name: 'Laura Košir', email: 'laura@gmail.com' }, { id: 4, name: 'Hana Košir', email: 'hannah@gmail.com' }]
     })
     User.insert({
       data: [
