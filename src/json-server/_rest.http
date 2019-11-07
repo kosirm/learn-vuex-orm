@@ -1,0 +1,21 @@
+GET http://localhost:3000/people HTTP/1.1
+
+###
+GET http://localhost:3000/people/5 HTTP/1.1
+
+###
+POST http://localhost:3000/people HTTP/1.1
+Content-Type: application/json
+
+{"id":105, "name": "Test User 105"}
+
+###
+PUT http://localhost:3000/people/5 HTTP/1.1
+Content-Type: application/json
+
+{"name": "Karla"}
+
+###
+
+DELETE http://localhost:3000/people/7 HTTP/1.1
+

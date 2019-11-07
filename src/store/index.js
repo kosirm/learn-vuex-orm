@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 import VuexORM from '@vuex-orm/core'
 import { Person, Adult, Child, User, Profile, Post, Comment } from './classes/_ClassList'
 
+// todo: sve ono što napravim važnoga, treba nadodati kao komentar ka tom commitu
+// todo: na taj način dobivam pomoču gita barem malo preglednosti nad kodom
+// git-lens je fenomenalan extension, ali ako ja ne unosim dobro podatke, mi ništa puno ne vrijedi...
 
 Vue.use(Vuex)
 const database = new VuexORM.Database()
